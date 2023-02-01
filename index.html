@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>DesignsMicroservices</title>
+</head>
+<body>
+    <h1>Microservices Design Principles  and Design Pattern </h1>
+    <p class="a">What is Microservices ?</p>
+    <p>Microservice architecture is a software architecture pattern
+     where a system is designed as a network of loosely coupled services.
+      It is a way of building software that can be scaled independently and 
+      that can be developed, deployed, and updated more rapidly than traditional monolithic applications.</p>
+      <p>This programming tutorial presents a discussion on some microservices design principles 
+        that will serve as guidelines to build scalable, high performance, fault tolerant microservices-based applications.</p>
+      <img src="f.png" alt="Not able to load the image " width="500" height="300"  class="b"> 
+      <img src="k.jpg" alt="Not able to load the image " width="500" height="300">
+      <p style="font-size: 30px; font-weight: bold; margin-bottom:10px;">Microservices Design Principles</p>
+      <div>
+        <ul style="margin-left: 0; font-family: 'Times New Roman', Times, serif; font-size: 20px;">
+           <li>High Cohesion and Low Coupling</li>
+           <li>Discrete Boundaries</li>
+           <li>Single Responsibility Principle</li>
+           <li>Design for Failure</li>
+           <li>Business Capabilities</li>
+           <li>Decentralization</li>
+           <li>Process Automation</li>
+           <li>Inter-Service Communication</li>
+           <li>Monitoring</li>
+           <li> Command Query Responsibility Segregation (CQRS)</li>
+        </ul>
+      </div>
+      <p style="font-size: 30px; font-weight: bold; margin-bottom:10px;"> High Cohesion and Low Coupling</p>
+      <p>Microservices-based applications should have high cohesion and low coupling. The idea behind this concept is that each service should do one thing and do it well, which means that the services should be highly cohesive. These services should also not depend on each other, which means they should have low coupling.
+         The cohesion of a module refers to how closely related its functions are. Having a high level of cohesion implies that functions within a module are inextricably related and can be understood as a whole. Low cohesion suggests that the functions 
+        within a module are not closely related and cannot be understood as 
+        a set. The higher the cohesion, the better – we may say that the modules are working together.</p>
+      <p class="a">Discrete Boundaries</p>
+      <p>Microservices are small and independently deployable units 
+        of functionality, making them easier to manage and scale. 
+        In a discrete microservice architecture, each of the microservices are responsible 
+        for a specific task.
+        As an example, assume that you have built a web application 
+        that enables users to buy shoes online. In that case, you might 
+        have one microservice responsible for handling the user’s login, 
+        and another handling the purchase and billing process.
+        When designing a microservices architecture, you should avoid 
+        having cross-functional dependencies between services. For example,
+         if you have two services: one for authentication and authorization and another for 
+         managing user profiles — do not build your system so that the profile management service 
+         needs to call the authentication and authorization service to work correctly.
+        One way to avoid this dependency is by implementing a
+         gateway that translates requests from one service into requests 
+         that another service will understand. For example: instead of having
+          your profile management service call your authentication and authorization service, have it call an API gateway first. The gateway should then translate those requests into calls that make sense for its counterpart on the other side, i.e., 
+        the authentication and authorization service.</p>
+        <p class="a">Single Responsibility Principle</p>
+        <p>The Single Responsibility Principle says there should be just one reason for a 
+            class to change at any time. The benefits of this principle are obvious – 
+            it reduces complexity and improves flexibility, extensibility, and maintenance. 
+            It also makes it easier to change classes without breaking them.
+            A microservice that adheres to the Single Responsibility
+             Principle is easier to maintain and update than a microservice that has multiple responsibilities.
+              It is also less likely to cause conflicts with other microservices.
+            When designing a microservices-based application, programmers must adhere to this principle 
+            – there should not be multiple responsibilities in a microservice</p>
+            <p class="a">Design for Failure</p>
+            <p>The Circuit Breaker Pattern is a software design pattern that protects against cascading
+                 failure in distributed systems. It works by enabling controlled 
+                failure of a service when it starts to fail frequently, without affecting the whole system
+                This allows the other services to continue functioning normally even if 
+                one service is down. In other words, failure of one service (or service going down) will
+                 not impact the other services. An error in a microservice (due to a memory leak, database
+                  connection issues, etc.) 
+                should not result in the failure of the entire application.
+                Let’s understand this with another real-life example.
+                 A developer might have a database service and an application service.
+                  If the database service goes down, the application service can still continue running. 
+                  This increases your application’s availability and reduces the amount of work required
+                   to fix broken dependencies.</p>
+                   <p class="a">Business Capabilities</p>
+                   <p>You should build your microservice around business capabilities. Each service should be responsible for a specific business capability, and all of the services together should be able to cover all of the necessary business capabilities for your application. This principle is essential for a few reasons:
+
+                    It helps to keep your services small and manageable. If each service is responsible for only one business capability, it will be easier to understand and change as needed.
+                    It helps ensure that a developer’s application is scalable. If each service can be scaled independently, developers can scale the parts of their application that need more resources without affecting the other parts.
+                    This principle can help developers to design more resilient applications.
+                
+                If one service goes down, the other services can still function and provide the necessary business capabilities. This can help minimize the impact of outages and downtime on your users.</p>
+               <p class="a">Decentralization</p>
+               <p>Unlike monolithic applications, in microservices-based applications, each service maintains its own copy of the data. Ideally, each microservice will have its database. Multiple services accessing or sharing the same database spoils the purpose of microservice architecture.
+
+                This would allow programmers to have centralized access control while seamlessly implementing audit logging and caching. This would also allow developers to centralize access control while also easily implementing audit logging and caching. Ideally,
+                 you should have one or two database tables per service.</p>
+                 <p class="a">Process Automation</p>
+                 <p>Process automation is an important design principle of 
+                    microservices architecture. By automating processes, coders can
+                     improve reliability, reduce costs, and speed up software development cycles.
+                    Unlike a monolithic application, you have several deployment units to manage in a microservices-based application. Hence, you should be able to automate the deployment process of your microservices-based application. You can do this by embracing DevOps 
+                    culture in your organization and using the right tools, such as Azure DevOps or Jenkins.</p>
+               <p class="a">Inter-Service Communication</p>
+ <p>When you break an existing monolithic application into microservices,
+     you must also define a way for these services to communicate. Since microservices architecture enables you to use heterogenous technologies, how then can these services communicate? Here’s 
+     exactly where Application Programming Interfaces (APIs) can help.
+    There are several ways that you can implement inter-service communication
+     in microservices architecture. One solution is to use an event-based approach where one service publishes an event that another service can subscribe to and react accordingly. Another option is to use a messaging protocol such as HTTP or AMQP so that messages can be 
+     exchanged between services without requiring any knowledge about their implementation details.
+    Programmers must encapsulate the technical details of how their service works internally and expose
+     API functions to allow other services (internal or external or both) to access their service through
+      those API methods. By doing this, they ensure that their service can grow on its own over time while 
+      at the same time not compromising on encapsulation.</p>
+      <p class="a">Command Query Responsibility Segregation (CQRS)</p>
+      <p>Command Query Segmentation (CQRS) is a design pattern that separates read and write operations into separate classes. This allows you to independently scale your read and write operations, which can be especially useful for microservices architectures.
+
+        The CQRS pattern is commonly used in a microservices architecture. This is because it allows different components to be responsible for other parts of the application’s functionality, making it easier to scale and maintain.
+        
+        As data access to the CQRS design pattern is limited to a single database, it can be helpful for complex queries that span multiple service databases. There will be two sections in this design: command and query. The command component will be responsible for creating, editing, and deleting statements, while the query component will be responsible for reading them.
+        
+        There are several benefits to this approach. The first is that it can allow you to scale your reads independently of your writes. For example, if your application has a lot of writes but few reads, you might want to create multiple instances of the writing layer and then have a single instance of the read layer. Another advantage is that it is easier to manage data integrity when each class has its responsibility. A third advantage is that it makes your code more testable because each class will only have one responsibility instead of many responsibilities, like many-to-many relationships usually have in relational databases.</p>
+
+
+        <p class="a">Design Patterns in microservices</p>
+        <div>
+  <ol class="d" >
+    <li>
+    Decomposition Pattern </li>
+    <li>Integration Pattern</li>
+    <li>Database Pattern </li>
+    <li>Observability pattern</li>
+    <li>Cross-Cutting Concern Pattern</li>
+  </ol>
+</div>
+<p class="a">Decomposition Pattern </p>
+<p><span > a .Decompose by Business Capability</span>
+  <span>Problem</span>
+  
+  Microservices is all about making services loosely coupled, applying the single responsibility principle. However, breaking an application into smaller pieces has to be done logically. How do we decompose an application into small services?
+  <span>Solution</span>
+  
+  One strategy is to decompose by business capability. A business capability is something that a business does in order to generate value. The set of capabilities for a given business depend on the type of business. For example, the capabilities of an insurance company typically include sales, marketing, underwriting, claims processing, billing, compliance, etc. Each business capability can be thought of as a service, except it’s business-oriented rather than technical.
+  <span>b .Decompose by Subdomain</span> 
+ <span> Problem</span>
+  
+  Decomposing an application using business capabilities might be a good start, but you will come across so-called "God Classes" which will not be easy to decompose. These classes will be common among multiple services. For example, the Order class will be used in Order Management, Order Taking, Order Delivery, etc. How do we decompose them?
+  
+  
+  <span>solution</span> the "God Classes" issue, DDD (Domain-Driven Design) comes to the rescue. It uses subdomains and bounded context concepts to solve this problem. DDD breaks the whole domain model created for the enterprise into subdomains. Each subdomain will have a model, and the scope of that model will be called the bounded context. Each microservice will be developed around the bounded context.
+  
+  Note: Identifying subdomains is not an easy task. It requires an understanding of the business. Like business capabilities, subdomains are identified by analyzing the business and its organizational structure and identifying the different areas of expertise. </p>
+   <p><span>c. Strangler Pattern</span> 
+    <span>Problem</span>
+    
+    So far, the design patterns we talked about were decomposing applications for greenfield, but 80% of the work we do is with brownfield applications, which are big, monolithic applications. Applying all the above design patterns to them will be difficult because breaking them into smaller pieces at the same time it's being used live is a big task.
+     <span>Solution</span>
+    
+    The Strangler pattern comes to the rescue. The Strangler pattern is based on an analogy to a vine that strangles a tree that it’s wrapped around. This solution works well with web applications, where a call goes back and forth, and for each URI call, a service can be broken into different domains and hosted as separate services. The idea is to do it one domain at a time. This creates two separate applications that live side by side in the same URI space. Eventually, the newly refactored application “strangles” or replaces the original application until finally you can shut off the monolithic application.</p>
+   <p class="a">2. Integration Patterns</p>
+   <p><span>a. API Gateway Pattern</span>
+  <span>Problem</span>
+  When an application is broken down to smaller microservices, there are a few concerns that need to be addressed:
+
+    How to call multiple microservices abstracting producer information.
+
+    On different channels (like desktop, mobile, and tablets), apps need different data to respond for the same backend service, as the UI might be different.
+
+    Different consumers might need a different format of the responses from reusable microservices. Who will do the data transformation or field manipulation?
+
+    How to handle different type of Protocols some of which might not be supported by producer microservice.
+<span>solution</span>
+An API Gateway helps to address many concerns raised by microservice implementation, not limited to the ones above.
+
+    An API Gateway is the single point of entry for any microservice call.
+
+    It can work as a proxy service to route a request to the concerned microservice, abstracting the producer details.
+
+    It can fan out a request to multiple services and aggregate the results to send back to the consumer.
+
+    One-size-fits-all APIs cannot solve all the consumer's requirements; this solution can create a fine-grained API for each specific type of client.
+
+    It can also convert the protocol request (e.g. AMQP) to another protocol (e.g. HTTP) and vice versa so that the producer and consumer can handle it.
+
+    It can also offload the authentication/authorization responsibility of the microservice.
+    <span>b. Aggregator Pattern</span>
+    <span>Problem</span>
+    We have talked about resolving the aggregating data problem in the API Gateway Pattern. However, we will talk about it here holistically. When breaking the business functionality into several smaller logical pieces of code, it becomes necessary to think about how to collaborate the data returned by each service. This responsibility cannot be left with the consumer, 
+    as then it might need to understand the internal implementation of the producer application.
+    <span>solution</span>
+    The Aggregator pattern helps to address this. It talks about how we can aggregate the data from different services and then send the final response to the consumer. This can be done in two ways:
+
+1. A composite microservice will make calls to all the required microservices, consolidate the data, and transform the data before sending back.
+
+2. An API Gateway can also partition the request to multiple microservices and aggregate the data before sending it to the consumer.
+
+It is recommended if any business logic is to be applied, then choose a
+ composite microservice. Otherwise, the API Gateway is the established solution.
+  </p>
+  <p class="a">Database Pattern</p>
+  <p>
+    <span>a. Database per Service</span>
+    <span>Problem</span>
+    There is a problem of how to define database architecture for microservices. Following are the concerns to be addressed:
+
+1. Services must be loosely coupled. They can be developed, deployed, and scaled independently.
+
+2. Business transactions may enforce invariants that span multiple services.
+
+3. Some business transactions need to query data that is owned by multiple services.
+
+4. Databases must sometimes be replicated and sharded in order to scale.
+
+5. Different services have different data storage requirements.
+    <span>solution</span>
+    To solve the above concerns, one database per microservice must be designed; it must be private to that service only. It should be accessed by the microservice API only. It cannot be accessed by other services directly. For example, for relational databases, we can use private-tables-per-service, schema-per-service, or database-server-per-service. Each microservice should have a separate database id so that
+     separate access can be given to put up a barrier and prevent it from using other service tables.
+     <span>b. Shared Database per Service</span>
+     <span>Problem</span>
+     We have talked about one database per service being ideal for microservices, but that is possible when the application is greenfield and to be developed with DDD. But if the application is a monolith and trying to break into microservices,
+      denormalization is not that easy. What is the suitable architecture in that case?
+     <span>Solution</span>
+     A shared database per service is not ideal, but that is the working solution 
+     for the above scenario. Most people consider this an anti-pattern for microservices, but for brownfield applications, this is a good start to break the application into smaller logical pieces. This should not be applied for greenfield applications. In this pattern, one database can be aligned with more than one microservice, but it has to 
+     be restricted to 2-3 maximum, otherwise scaling, autonomy, and independence
+      will be challenging to execute.
+  </p>
+  <p class="a">4. Observability Patterns</p>
+  <p><span>
+    a. Log Aggregation
+  </span>
+  <span>
+Problem
+  </span>
+  Consider a use case where an application consists of multiple service instances that are running on multiple machines. Requests often span multiple service instances. Each service instance generates a log file in a standardized format.
+   How can we understand the application behavior through logs for a particular request?
+<span> solution  </span>
+We need a centralized logging service that aggregates logs from each service instance. Users can search and analyze the logs. They can configure alerts that are triggered when certain messages appear in the logs. For example, PCF does have Loggeregator, which collects logs from each component (router, controller, 
+diego, etc...) of the PCF platform along with applications. AWS Cloud Watch also does the same.
+<span>b. Performance Metrics</span>
+<span>Problem</span>
+When the service portfolio increases due to microservice architecture, it becomes critical to keep a watch on the transactions so that patterns can be monitored and alerts sent 
+when an issue happens. How should we collect metrics to monitor application perfomance?
+<span>solution</span>
+A metrics service is required to gather statistics about individual operations. It should aggregate the metrics of an application service, which provides reporting and alerting. There are two models for aggregating metrics:
+
+    Push — the service pushes metrics to the metrics service e.g. NewRelic, AppDynamics
+
+    Pull — the metrics services pulls metrics from the service e.g. Prometheus
+
+</p>
+<p class="a">5. Cross-Cutting Concern Patterns</p>
+<p>
+<span>a. External Configuration</span>
+<span>Problem</span>
+A service typically calls other services and databases as well. For each environment like dev, QA, UAT, prod, the endpoint URL or some configuration properties might be different. A change in any of those properties might require
+ a re-build and re-deploy of the service. How do we avoid code modification for configuration changes?
+<span>solution</span>
+Externalize all the configuration, including endpoint URLs and credentials. The application should load them either at startup or on the fly.
+
+Spring Cloud config server provides the option to externalize the properties to GitHub and load them as environment properties.
+ These can be accessed by the application on startup or can be refreshed without a server restart.
+
+<span>b. Service Discovery Pattern</span>
+<span>Problem</span>
+When microservices come into the picture, we need to address a few issues in terms of calling services:
+
+    With container technology, IP addresses are dynamically allocated to the service instances. Every time the address changes, a consumer service can break and need manual changes.
+
+    Each service URL has to be remembered by the consumer and become tightly coupled.
+
+So how does the consumer or router know all the available service instances and locations?
+<span>solution</span>
+A service registry needs to be created which will keep the metadata of each producer service. A service instance should register to the registry when starting and should de-register when shutting down. The consumer or router should query the registry and find out the location of the service. The registry also needs to do a health check of the producer service to ensure that only working instances of the services are available to be consumed through it. There are two types of service discovery: client-side and server-side. 
+An example of client-side discovery is Netflix Eureka and an example of server-side discovery is AWS ALB.
+
+<span>c. Circuit Breaker Pattern</span>
+<span>Problem</span>
+A service generally calls other services to retrieve data, and there is the chance that the downstream service may be down. There are two problems with this: first, the request will keep going to the down service, exhausting network resources and slowing performance. Second, the user experience will be bad and unpredictable.
+ How do we avoid cascading service failures and handle failures gracefully?
+<span>solution</span>
+The consumer should invoke a remote service via a proxy that behaves in a similar fashion to an electrical circuit breaker. When the number of consecutive failures crosses a threshold, the circuit breaker trips, and for the duration of a timeout period, all attempts to invoke the remote service will fail immediately. After the timeout expires the circuit breaker allows a limited number of test requests to pass through. If those requests succeed, the circuit breaker resumes normal operation. Otherwise, if there is a failure, the timeout period begins again.
+
+Netflix Hystrix is a good implementation of the circuit breaker pattern. It also helps you to define a fallback mechanism which can be used when the circuit breaker trips. That provides a better user experience.
+</p>
+<p  style="font-size: 37px; font-family: sans-serif; font-weight: lighter;margin-bottom: 0px;">Giant Tech Companies which are using this architecture</p>
+<ul style="margin-left:0px; font-size: 30px; font-family: montserat; margin-top: 0px;">
+  <li>Amazon </li>
+  <li>Netflix</li>
+  <li>Coca Cola</li>
+  <li>Spotify </li>
+  <li>eBay</li>
+  <li>Uber</li>
+</ul>
+<p style="font-family:Arial, Helvetica, sans-serif ;font-size: 40px;margin: 0px; font-weight: 1;">Case Studies on microservices</p>
+<p style="font-family:Arial, Helvetica, sans-serif ;font-size: 30px;margin: 0px;">Case Study 1:   Amazon</p>
+
+<p><em style="font-size: 25px;">Scalability</em><br> <em style="font-weight: bold;">Problem :</em>Different teams and processes.<br>
+
+  To solve the issues, Amazon created separate small teams, each of these teams being assigned to solve a specific need.<br>
+  
+  The goal for each team was twofold:<br>
+  
+  - to come up with a solution to the problem and <br>
+  
+  - embed the service and dependencies as a single entity, deployable on a container.<br>
+  
+  In the same time, the company started do develop new features by listening to what the customers were asking. As a result, Amazon built a microservices architecture that is as simple as possible.
+   Also, the company gained not only a higher level of scalability but also the ability to shorten the time to market.</p>
+<p style="font-family:Arial, Helvetica, sans-serif ;font-size: 30px;margin: 0px;">Case Study 2: Groupon</p>
+<p ><em style="font-size: 25px;">2. Shorten the Time for Shipping New Features</em><br>
+<em style="font-weight: bold;">Problem :</em><br>Groupon started with a simple website designed to show one deal per day to the people living in Chicago. The website was initially built with a single codebase using Ruby on Rails. As the company expanded to more than 48 countries and added new functionalities 
+like mobile device support, the codebase quickly grew complex and large, making it harder and harder to ship new features. <br>
+<em style="font-weight: bold;">Solution :</em><br>
+As a solution, Groupon decided to split the application into several small and manageable pieces and leverage the power of microservices.
+ For example, each major section of their website was migrated to an independent Node.js application.
+<br>In the end, the initial monolith was split into several independent applications that are easy to maintain end extend.
+</p>
+<p style="font-family:Arial, Helvetica, sans-serif ;font-size: 30px;margin: 0px;">Case Study 3: Paypal</p>
+<p>
+<em style="font-weight: bold;">Problem :</em><br>
+As its number of user and transactions skyrocketed, PayPal engineers were facing a unique challenge:
+ due to the complexity of the architecture, it wasn’t uncommon for a service to cover a thousand VMs. Each VM produced a very
+ low throughput but the large number of hops was taking a toll on the network performance. <br>
+
+As more and more services were added, latency was increasing with the same speed that the user experience was deteriorating. <br>
+
+The engineers were well aware that a large number of VMs was good for spreading the load and for redundancy,
+ but they just passed the threshold where adding more VMs meant performance penalty. <br>
+<em style="font-weight: bold;">Solution :</em><br>
+To solve the issues, in 2013, PayPal started migrating from their monolithic Java-based architecture to
+ a microservices architecture based on Node.js. <br>
+
+In terms of performance, the results were astounding: <br>
+
+“With as little as 8 VMs and 2 vCPU each, applications were able to serve over a billion hits a day. 
+Our systems stay responsive even at 90% CPU, very uncharacteristic for our older architectures.”
+</p>
+</body>
+  </html>
